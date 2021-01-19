@@ -1,0 +1,57 @@
+***NODE INFO***
+NAME       STATUS   ROLES    AGE    VERSION
+minikube   Ready    master   7d8h   v1.19.4
+***DEPLOYMENT INFO***
+Name:                   sba-python-deployment
+Namespace:              default
+CreationTimestamp:      Mon, 18 Jan 2021 20:00:11 -0500
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=sba-python
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=sba-python
+  Containers:
+   sba-python-container:
+    Image:        kcharette/sba-python:v1
+    Port:         8090/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   sba-python-deployment-576b594878 (3/3 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  39m   deployment-controller  Scaled up replica set sba-python-deployment-576b594878 to 3
+***SERVICE INFO***
+Name:                     sba-python-service
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=sba-python
+Type:                     NodePort
+IP Families:              <none>
+IP:                       10.109.28.21
+IPs:                      <none>
+Port:                     <unset>  8090/TCP
+TargetPort:               8090/TCP
+NodePort:                 <unset>  30007/TCP
+Endpoints:                172.17.0.7:8090,172.17.0.8:8090,172.17.0.9:8090
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+***POD INFO***
+NAME                                     READY   STATUS    RESTARTS   AGE
+sba-python-deployment-576b594878-58jkk   1/1     Running   0          39m
+sba-python-deployment-576b594878-7jj7l   1/1     Running   0          39m
+sba-python-deployment-576b594878-jxbk8   1/1     Running   0          39m
